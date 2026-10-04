@@ -1,16 +1,14 @@
-# Ferrous Ink website
+# Ferrous Ink website — Version 2
 
-Static website prepared for GitHub Pages.
+GitHub Pages site for ferrousink.com.
 
-## Pages
-- Home
-- Books
-- Tapovan: The Iron
-- About Tvisha
-- Contact
+Includes:
+- Home link in the top navigation
+- Exact Ferrous Ink logo artwork
+- Single-line desktop headline: “Stories forged across worlds.”
+- Forge/iron portal hero artwork
+- Exact Tapovan: The Iron Book 1 cover
+- Home, Books, Tapovan, About, Contact, and 404 pages
+- CNAME for ferrousink.com
 
-## Before final launch
-- Replace the text-only header brand with the approved Ferrous Ink master logo.
-- Add final Tapovan cover/artwork.
-- Connect the contact form to a secure form-processing service.
-- Configure ferrousink.com in GitHub Pages and DNS.
+Note: the Contact form is visual only until a form-processing service is connected.

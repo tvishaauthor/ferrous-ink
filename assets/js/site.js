@@ -1,10 +1,2 @@
-
-document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
-const form = document.querySelector('#contact-form');
-if(form){
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const note = document.querySelector('#form-note');
-    note.textContent = 'The form design is ready. Connect a form service before publishing submissions.';
-  });
-}
+document.querySelectorAll('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
+const f=document.querySelector('#contact-form');if(f){f.addEventListener('submit',e=>{e.preventDefault();document.querySelector('#form-note').textContent='Form delivery will be connected in the next step.';});}

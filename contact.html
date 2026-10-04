@@ -12,15 +12,17 @@
   <p class="contact-note">Ferrous Ink is the home of books by Tvisha. Messages sent here will be directed to the author without displaying a public email address.</p>
  </div>
  <div class="contact-card">
-  <form class="form" id="contact-form">
+  <form class="form" id="contact-form" action="https://formspree.io/f/xyekgvqp" method="POST">
    <div class="form-row">
-    <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
-    <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+    <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" maxlength="100" required></div>
+    <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
    </div>
-   <label for="subject">Subject</label><input id="subject" name="subject" required>
-   <label for="message">Message</label><textarea id="message" name="message" required></textarea>
-   <button class="button contact-button" type="submit">Send Message</button>
-   <p class="notice" id="form-note">Message delivery will be connected securely before launch.</p>
+   <label for="subject">Subject</label><input id="subject" name="subject" maxlength="150" required>
+   <label for="message">Message</label><textarea id="message" name="message" maxlength="500" aria-describedby="message-count" required></textarea>
+   <div id="message-count" class="notice" style="text-align:right;margin-top:-.6rem">0 / 500 characters</div>
+   <div aria-hidden="true" style="position:absolute;left:-9999px"><label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+   <button class="button contact-button" type="submit" id="contact-submit">Send Message</button>
+   <p class="notice" id="form-note" role="status" aria-live="polite">All fields are required. Maximum message length: 500 characters.</p>
   </form>
  </div>
 </section></main><footer><div class="footer-inner"><div>FERROUS INK · Books by Tvisha</div><div>© <span data-year></span> Ferrous Ink. All rights reserved.</div></div></footer><script src="assets/js/site.js"></script></body></html>

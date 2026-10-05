@@ -1,7 +1,9 @@
 .author-space{padding-top:100px;padding-bottom:110px}
 .author-layout{display:grid;grid-template-columns:minmax(0,760px) 260px;gap:110px;align-items:start;justify-content:space-between}
 .author-copy{max-width:760px}
-.author-name{margin:0 0 8px;font-family:"Bodoni 72",Didot,Baskerville,"Baskerville Old Face",Georgia,serif;font-size:clamp(4.6rem,8vw,7.5rem);font-weight:400;line-height:.92;letter-spacing:-.035em;color:#292520}
+.author-name{margin:0 0 8px;font-family:"Bodoni 72",Didot,Baskerville,"Baskerville Old Face",Georgia,serif;font-size:clamp(3.5rem,5.2vw,5rem);font-weight:400;line-height:.94;letter-spacing:-.025em;color:#292520;background-image:linear-gradient(108deg,#25211d 0%,#49392b 28%,#2b2722 52%,#745237 70%,#292520 100%),repeating-linear-gradient(96deg,rgba(255,255,255,.12) 0 1px,rgba(0,0,0,.06) 1px 3px);background-blend-mode:soft-light;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;width:max-content;max-width:100%}
+.lamp-i{position:relative;display:inline-block}
+.lamp-i::after{content:"";position:absolute;width:.12em;height:.12em;border-radius:50%;left:50%;top:.035em;transform:translate(-50%,-50%);background:#c8893f;box-shadow:0 0 .08em rgba(224,151,66,.95),0 0 .2em rgba(205,123,43,.62),0 0 .42em rgba(181,99,31,.28);z-index:2}
 .author-line{margin:24px 0 0;font-family:Baskerville,"Baskerville Old Face",Georgia,serif;font-size:1.35rem;font-style:italic;color:#5a5148}
 .author-rule{width:72px;height:1px;background:var(--bronze);margin:34px 0 36px}
 .author-bio{font-size:1.1rem;line-height:1.78}
@@ -9,4 +11,4 @@
 .author-mark{width:220px;height:230px;overflow:hidden;margin-top:58px;opacity:.11;pointer-events:none}
 .author-mark img{width:700px;max-width:none;height:219px;object-fit:contain;object-position:left top}
 @media(max-width:900px){.author-layout{grid-template-columns:minmax(0,1fr) 180px;gap:54px}.author-mark{width:170px;height:200px;opacity:.09}.author-mark img{width:620px;height:auto}}
-@media(max-width:680px){.author-space{padding-top:68px;padding-bottom:76px}.author-layout{display:block}.author-name{font-size:4.4rem}.author-line{font-size:1.2rem}.author-mark{width:125px;height:135px;margin:42px 0 0;opacity:.08}.author-mark img{width:430px;height:auto}}
+@media(max-width:680px){.author-space{padding-top:68px;padding-bottom:76px}.author-layout{display:block}.author-name{font-size:3.6rem}.author-line{font-size:1.2rem}.author-mark{width:125px;height:135px;margin:42px 0 0;opacity:.08}.author-mark img{width:430px;height:auto}}

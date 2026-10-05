@@ -1,0 +1,39 @@
+name: Convert author image
+
+on:
+  push:
+    paths:
+      - '.github/workflows/convert-author-image.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract embedded WebP
+        shell: python
+        run: |
+          import re, base64, pathlib
+          s = pathlib.Path('assets/images/author-still-life.svg').read_text()
+          m = re.search(r'data:image/webp;base64,([^\"]+)', s)
+          if not m:
+              raise SystemExit('Embedded WebP not found')
+          pathlib.Path('/tmp/author.webp').write_bytes(base64.b64decode(m.group(1)))
+      - name: Convert to JPEG
+        run: |
+          if command -v magick >/dev/null 2>&1; then
+            magick /tmp/author.webp -quality 92 assets/images/author-still-life.jpg
+          else
+            convert /tmp/author.webp -quality 92 assets/images/author-still-life.jpg
+          fi
+      - name: Commit JPEG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/author-still-life.jpg
+          git diff --cached --quiet && exit 0
+          git commit -m "Add Safari-safe author still life"
+          git push

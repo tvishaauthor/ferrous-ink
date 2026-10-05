@@ -1,13 +1,14 @@
-.author-space{max-width:1500px;padding-top:76px;padding-bottom:96px}
-.author-layout{display:grid;grid-template-columns:minmax(0,760px) minmax(520px,650px);gap:64px;align-items:start;justify-content:space-between}
-.author-copy{max-width:760px;position:relative;z-index:2}
+.author-space{max-width:1560px;padding-top:76px;padding-bottom:96px}
+.author-layout{display:grid;grid-template-columns:minmax(0,700px) minmax(0,780px);gap:42px;align-items:start;justify-content:space-between}
+.author-copy{max-width:700px;position:relative;z-index:2}
 .author-name{margin:0 0 8px;font-family:"Bodoni 72",Didot,Baskerville,"Baskerville Old Face",Georgia,serif;font-size:clamp(3.1rem,4.35vw,4.35rem);font-weight:400;line-height:.96;letter-spacing:-.022em;color:#292520;background-image:linear-gradient(108deg,#25211d 0%,#49392b 28%,#2b2722 52%,#745237 70%,#292520 100%),repeating-linear-gradient(96deg,rgba(255,255,255,.12) 0 1px,rgba(0,0,0,.06) 1px 3px);background-blend-mode:soft-light;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;width:max-content;max-width:100%}
 .author-line{margin:20px 0 0;font-family:Baskerville,"Baskerville Old Face",Georgia,serif;font-size:1.3rem;font-style:italic;color:#5a5148}
 .author-rule{width:72px;height:1px;background:var(--bronze);margin:30px 0 34px}
-.author-bio{font-size:1.08rem;line-height:1.76;max-width:740px}
+.author-bio{font-size:1.08rem;line-height:1.76;max-width:700px}
 .author-bio p{margin-bottom:1.4em}
-.author-visual{width:650px;max-width:46vw;justify-self:end;margin-top:2px;margin-right:-18px;filter:drop-shadow(0 18px 28px rgba(66,39,19,.06));pointer-events:none}
-.author-visual img{display:block;width:100%;height:auto}
-@media(max-width:1200px){.author-space{max-width:var(--max)}.author-layout{grid-template-columns:minmax(0,1fr) minmax(390px,.9fr);gap:40px}.author-visual{width:100%;max-width:none;margin-right:-18px}.author-bio{font-size:1.04rem}}
-@media(max-width:900px){.author-layout{grid-template-columns:minmax(0,1fr) minmax(330px,.8fr);gap:30px}.author-visual{margin-top:20px}}
-@media(max-width:760px){.author-space{padding-top:62px;padding-bottom:72px}.author-layout{display:block}.author-name{font-size:3.25rem}.author-line{font-size:1.18rem}.author-visual{width:min(100%,560px);max-width:none;margin:38px auto 0}.author-bio{font-size:1.03rem}}
+/* The artwork itself contains a large pale fade on its left. Crop that internal whitespace so the still life reads at the intended scale. */
+.author-visual{width:780px;height:610px;max-width:none;justify-self:end;overflow:hidden;margin-top:-12px;margin-right:-18px;filter:drop-shadow(0 18px 28px rgba(66,39,19,.06));pointer-events:none}
+.author-visual img{display:block;width:1060px;max-width:none;height:auto;transform:translateX(-300px);transform-origin:right top}
+@media(max-width:1300px){.author-space{max-width:var(--max)}.author-layout{grid-template-columns:minmax(0,1fr) minmax(420px,.95fr);gap:34px}.author-visual{width:100%;height:auto;overflow:visible;margin:8px -18px 0 0}.author-visual img{width:145%;max-width:none;transform:translateX(-31%)}}
+@media(max-width:900px){.author-layout{grid-template-columns:minmax(0,1fr) minmax(330px,.8fr);gap:26px}.author-bio{font-size:1.04rem}.author-visual img{width:155%;transform:translateX(-36%)}}
+@media(max-width:760px){.author-space{padding-top:62px;padding-bottom:72px}.author-layout{display:block}.author-name{font-size:3.25rem}.author-line{font-size:1.18rem}.author-visual{width:100%;height:auto;overflow:hidden;margin:38px auto 0}.author-visual img{width:150%;max-width:none;transform:translateX(-33%)}.author-bio{font-size:1.03rem}}

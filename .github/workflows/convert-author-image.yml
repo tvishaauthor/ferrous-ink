@@ -21,7 +21,9 @@ jobs:
           m = re.search(r'data:image/webp;base64,([^\"]+)', s)
           if not m:
               raise SystemExit('Embedded WebP not found')
-          pathlib.Path('/tmp/author.webp').write_bytes(base64.b64decode(m.group(1)))
+          data = m.group(1).strip()
+          data += '=' * (-len(data) % 4)
+          pathlib.Path('/tmp/author.webp').write_bytes(base64.b64decode(data))
       - name: Convert to JPEG
         run: |
           if command -v magick >/dev/null 2>&1; then

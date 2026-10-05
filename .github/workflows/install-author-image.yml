@@ -1,0 +1,24 @@
+name: Install author image
+on:
+  push:
+    branches: [image-upload-temp4]
+    paths: ['.image-upload/ready']
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: image-upload-temp4
+      - name: Decode image
+        run: |
+          cat .image-upload/chunk-*.txt | base64 --decode > assets/images/author-still-life-hq.jpg
+          rm -rf .image-upload
+          rm .github/workflows/install-author-image.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add high-resolution author still life"
+          git push origin HEAD:image-upload-temp4

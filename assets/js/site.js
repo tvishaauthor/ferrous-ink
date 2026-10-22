@@ -53,3 +53,40 @@ if(f){
     }
   });
 }
+
+const newsletter=document.querySelector('#newsletter-form');
+if(newsletter){
+  const status=newsletter.querySelector('#newsletter-status');
+  const submit=newsletter.querySelector('#newsletter-submit');
+  newsletter.addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(!newsletter.checkValidity()){
+      newsletter.reportValidity();
+      return;
+    }
+    submit.disabled=true;
+    submit.textContent='Joining…';
+    status.textContent='Adding you to the reader list…';
+    try{
+      const response=await fetch(newsletter.action,{
+        method:'POST',
+        body:new FormData(newsletter),
+        headers:{'Accept':'application/json'}
+      });
+      if(response.ok){
+        newsletter.reset();
+        status.textContent='Thank you. Your signup was received. Advance copies are offered in signup order.';
+      }else{
+        let data={};
+        try{data=await response.json();}catch(_e){}
+        const detail=data.errors?.map(x=>x.message).filter(Boolean).join(' ');
+        status.textContent=detail||'Your signup could not be sent. Please check your email and try again.';
+      }
+    }catch(_e){
+      status.textContent='Your signup could not be sent. Please check your connection and try again.';
+    }finally{
+      submit.disabled=false;
+      submit.textContent='Join the List';
+    }
+  });
+}

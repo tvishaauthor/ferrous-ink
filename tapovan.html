@@ -16,5 +16,5 @@
 <p><strong>TAPOVAN: THE IRON</strong> opens a trilogy spanning two decades of war, statecraft, and a love never spoken aloud. It is the story of what one craftsman will preserve when an empire comes to take it.</p>
 </div></div>
 </div></section></main><footer><div class="footer-inner"><div>FERROUS INK · Books by Tvisha</div><div>© <span data-year></span> Ferrous Ink. All rights reserved.</div></div></footer><script src="assets/js/site.js"></script><script>
-(async()=>{try{const files=['part0.txt','part1.txt','part2.txt','part3.txt','part4.txt','part5.txt','part6.txt','part7.txt'];const parts=await Promise.all(files.map(f=>fetch('assets/images/tapovan-cover-data/'+f+'?v=2').then(r=>{if(!r.ok)throw new Error('cover');return r.text()})));document.querySelectorAll('.tapovan-cover-live').forEach(img=>img.src='data:image/webp;base64,'+parts.join(''));}catch(e){/* retain existing cover as fallback */}})();
+(async()=>{try{const data=await fetch('assets/images/tapovan-cover-data.txt?v=3').then(r=>{if(!r.ok)throw new Error('cover');return r.text()});document.querySelectorAll('.tapovan-cover-live').forEach(img=>img.src='data:image/webp;base64,'+data.trim());}catch(e){/* retain existing cover as fallback */}})();
 </script></body></html>

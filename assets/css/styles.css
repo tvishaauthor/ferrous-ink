@@ -70,5 +70,13 @@ footer{border-top:1px solid var(--line);margin-top:55px}.footer-inner{max-width:
 .home-note-card h3{font-size:1.8rem;margin-bottom:14px}.home-note-card p:not(.eyebrow){color:#5d544b;max-width:520px}
 .social-links-inline{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px}
 .footer-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.footer-links a{text-decoration:none}.footer-links a:hover{color:var(--bronze)}
+.reviews-section h2,.home-review-preview h2{max-width:760px;margin-bottom:34px}
+.reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.review-card{margin:0;border:1px solid var(--line);background:rgba(255,255,255,.2);padding:30px 32px;position:relative}
+.review-card:before{content:"“";position:absolute;top:8px;right:20px;font-size:4.4rem;line-height:1;color:rgba(154,103,55,.15);font-family:Georgia,serif}
+.review-card p{margin:0 0 22px;font-size:1.05rem;line-height:1.72;color:#453e37;position:relative;z-index:1}
+.review-card footer{border:0;margin:0;padding:0;color:var(--bronze);font:700 .7rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.11em}
+.home-review-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.home-review-preview .review-card{min-height:220px}.review-more{margin:28px 0 0}
 @media(max-width:900px){.home-book-feature{grid-template-columns:270px 1fr;gap:46px}.home-notes{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.home-book-feature,.home-notes{grid-template-columns:1fr}.home-book-cover{max-width:280px;margin:0 auto}.home-note-card{min-height:0}.footer-links{margin-top:10px}.hero-actions{align-items:flex-start;flex-direction:column;gap:16px}}
+@media(max-width:680px){.home-book-feature,.home-notes,.reviews-grid,.home-review-grid{grid-template-columns:1fr}.home-book-cover{max-width:280px;margin:0 auto}.home-note-card{min-height:0}.footer-links{margin-top:10px}.hero-actions{align-items:flex-start;flex-direction:column;gap:16px}.review-card{padding:26px 24px}}

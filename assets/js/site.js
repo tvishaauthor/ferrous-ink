@@ -90,3 +90,19 @@ if(newsletter){
     }
   });
 }
+
+(async()=>{
+  const covers=[...document.querySelectorAll('img[src*="tapovan-cover-current.svg"]')];
+  if(!covers.length)return;
+  try{
+    const files=['part0.txt','part1.txt'];
+    const parts=await Promise.all(files.map(name=>fetch(`assets/images/tapovan-medium-data/${name}?v=16`).then(r=>{
+      if(!r.ok)throw new Error('cover');
+      return r.text();
+    })));
+    const src='data:image/jpeg;base64,'+parts.join('');
+    covers.forEach(img=>{img.src=src;});
+  }catch(_e){
+    /* Keep the embedded cover as a safe fallback. */
+  }
+})();

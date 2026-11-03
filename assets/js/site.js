@@ -91,20 +91,36 @@ if(newsletter){
   });
 }
 
-(async()=>{
-  const covers=[...document.querySelectorAll('img[src*="tapovan-cover-current.svg"], img[data-tapovan-cover]')];
+async function loadMediumTapovanCover(){
+  const covers=[...document.querySelectorAll('img[data-tapovan-cover="medium"]')];
   if(!covers.length)return;
   try{
-    const data=await fetch('assets/images/tapovan-cover-hd.b64?v=17').then(r=>{
-      if(!r.ok)throw new Error('cover');
+    const files=['part0.txt','part1.txt'];
+    const parts=await Promise.all(files.map(name=>fetch(`assets/images/tapovan-medium-data/${name}?v=18`).then(r=>{
+      if(!r.ok)throw new Error('medium cover');
+      return r.text();
+    })));
+    const src='data:image/jpeg;base64,'+parts.join('').trim();
+    covers.forEach(img=>{img.src=src;});
+  }catch(_e){
+    /* Leave the built-in cover visible if the medium source fails. */
+  }
+}
+
+async function loadLargeTapovanCover(){
+  const covers=[...document.querySelectorAll('img[data-tapovan-cover="large"]')];
+  if(!covers.length)return;
+  try{
+    const data=await fetch('assets/images/tapovan-cover-hd.b64?v=18').then(r=>{
+      if(!r.ok)throw new Error('large cover');
       return r.text();
     });
     const src='data:image/jpeg;base64,'+data.trim();
-    covers.forEach(img=>{
-      img.src=src;
-      img.removeAttribute('srcset');
-    });
+    covers.forEach(img=>{img.src=src;});
   }catch(_e){
-    /* Keep the embedded cover as a safe fallback. */
+    /* Leave the built-in cover visible if the large source fails. */
   }
-})();
+}
+
+loadMediumTapovanCover();
+loadLargeTapovanCover();

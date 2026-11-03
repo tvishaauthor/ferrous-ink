@@ -92,16 +92,18 @@ if(newsletter){
 }
 
 (async()=>{
-  const covers=[...document.querySelectorAll('img[src*="tapovan-cover-current.svg"]')];
+  const covers=[...document.querySelectorAll('img[src*="tapovan-cover-current.svg"], img[data-tapovan-cover]')];
   if(!covers.length)return;
   try{
-    const files=['part0.txt','part1.txt'];
-    const parts=await Promise.all(files.map(name=>fetch(`assets/images/tapovan-medium-data/${name}?v=16`).then(r=>{
+    const data=await fetch('assets/images/tapovan-cover-hd.b64?v=17').then(r=>{
       if(!r.ok)throw new Error('cover');
       return r.text();
-    })));
-    const src='data:image/jpeg;base64,'+parts.join('');
-    covers.forEach(img=>{img.src=src;});
+    });
+    const src='data:image/jpeg;base64,'+data.trim();
+    covers.forEach(img=>{
+      img.src=src;
+      img.removeAttribute('srcset');
+    });
   }catch(_e){
     /* Keep the embedded cover as a safe fallback. */
   }
